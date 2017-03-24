@@ -1,8 +1,10 @@
 package com.gpdata.template.user.service.impl;
 
 import com.gpdata.template.base.service.BaseService;
+import com.gpdata.template.user.dao.UserDao;
 import com.gpdata.template.user.entity.User;
 import com.gpdata.template.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,9 +13,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends BaseService implements UserService {
 
+    @Autowired
+    private UserDao userDao;
+
     @Override
     public User getUserById(Long userId) {
-        return null;
+        return userDao.getUserById(userId);
     }
 
     @Override

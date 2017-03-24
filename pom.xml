@@ -764,7 +764,7 @@
             <properties>
                 <!-- 数据库配置 -->
                 <project.jdbc.driverClassName>com.mysql.jdbc.Driver</project.jdbc.driverClassName>
-                <project.jdbc.url>jdbc:mysql://localhost:3306/guyuannms</project.jdbc.url>
+                <project.jdbc.url>jdbc:mysql://localhost:3306/test</project.jdbc.url>
                 <project.jdbc.username>root</project.jdbc.username>
                 <project.jdbc.password>root123</project.jdbc.password>
                 <project.jdbc.hostandport>localhost:3306</project.jdbc.hostandport>
