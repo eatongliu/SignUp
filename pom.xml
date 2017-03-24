@@ -1,11 +1,13 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>SimpleWebProject</groupId>
+    <groupId>com.gpdata.SignUp</groupId>
     <artifactId>SignUp</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>SignUp Maven Webapp</name>
+    <name>SignUp</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -692,7 +694,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>WebProjectTemplate</finalName>
+        <finalName>SignUp</finalName>
 
         <plugins>
             <plugin>
@@ -741,6 +743,19 @@
             </plugin>
         </plugins>
 
+        <resources>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
+        <testResources>
+            <testResource>
+                <directory>${project.basedir}/src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
     </build>
 
     <profiles>
@@ -749,10 +764,19 @@
             <properties>
                 <!-- 数据库配置 -->
                 <project.jdbc.driverClassName>com.mysql.jdbc.Driver</project.jdbc.driverClassName>
-                <project.jdbc.url>jdbc:mysql://localhost:3306/mysql</project.jdbc.url>
+                <project.jdbc.url>jdbc:mysql://localhost:3306/guyuannms</project.jdbc.url>
                 <project.jdbc.username>root</project.jdbc.username>
                 <project.jdbc.password>root123</project.jdbc.password>
                 <project.jdbc.hostandport>localhost:3306</project.jdbc.hostandport>
+
+                <project.jdbc.druid.initialSize>10</project.jdbc.druid.initialSize>
+                <project.jdbc.druid.minIdle>200</project.jdbc.druid.minIdle>
+                <project.jdbc.druid.maxActive>200</project.jdbc.druid.maxActive>
+                <project.jdbc.druid.maxWait>60000</project.jdbc.druid.maxWait>
+                <project.jdbc.druid.timeBetweenEvictionRunsMillis>60000
+                </project.jdbc.druid.timeBetweenEvictionRunsMillis>
+                <project.jdbc.druid.minEvictableIdleTimeMillis>300000</project.jdbc.druid.minEvictableIdleTimeMillis>
+
 
                 <!-- HBase配置 -->
                 <hbase.zookeeper.property.clientPort>2181</hbase.zookeeper.property.clientPort>

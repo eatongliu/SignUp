@@ -44,15 +44,13 @@
     <bean id="redisCache" class="com.gpdata.template.base.cache.CacheFactory"
           factory-method="getInstances"/>
 
-
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 
         <!---->
-        <property name="driverClass" value="${project.jdbc.driverClassName}"/>
-        <property name="jdbcUrl" value="${project.jdbc.url}"/>
-        <property name="user" value="${project.jdbc.username}"/>
-        <property name="password" value="${project.jdbc.password}"/>
-
+        <property name="driverClass" value="${jdbc.driverClassName}"/>
+        <property name="jdbcUrl" value="${jdbc.url}"/>
+        <property name="user" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
 
         <property name="initialPoolSize" value="1"/>
         <property name="acquireIncrement" value="10"/>
@@ -77,10 +75,10 @@
             <props>
                 <!--<prop key="hibernate.dialect">org.hibernate.dialect.MySQLInnoDBDialect</prop>-->
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-                <prop key="hibernate.connection.driver_class">${project.jdbc.driverClassName}</prop>
-                <prop key="hibernate.connection.url">${project.jdbc.url}</prop>
-                <prop key="hibernate.connection.username">${project.jdbc.username}</prop>
-                <prop key="hibernate.connection.password">${project.jdbc.password}</prop>
+                <prop key="hibernate.connection.driver_class">${jdbc.driverClassName}</prop>
+                <prop key="hibernate.connection.url">${jdbc.url}</prop>
+                <prop key="hibernate.connection.username">${jdbc.username}</prop>
+                <prop key="hibernate.connection.password">${jdbc.password}</prop>
 
                 <prop key="hibernate.show_sql">true</prop>
                 <prop key="hibernate.format_sql">true</prop>
@@ -123,12 +121,11 @@
             </props>
         </property>
 
-        <!--pojo实体类-->
         <property name="packagesToScan">
             <list>
+                <value>com.gpdata.template.user.entity</value>
                 <!--<value>com.gpdata.template.ft.entity</value>-->
                 <!--<value>com.gpdata.template.md.entity</value>-->
-                <!--<value>com.gpdata.template.sv.entity</value>-->
             </list>
         </property>
     </bean>
@@ -222,7 +219,6 @@
     <!-- 导入权限管理的配置 -->
     <import resource="applicationContext-shiro.xml"/>
 
-
     <!-- 定时任务  "0 0 3 * * ?" 每天上午3点触发 ，进行表结构更新 秒（0~59）
         分钟（0~59）
         小时（0~23）
@@ -231,28 +227,25 @@
         天（星期）（1~7 1=SUN 或 SUN，MON，TUE，WED，THU，FRI，SAT）
         年份（1970－2099）
         -->
-    <!-- 定时任务 -->
-    <!-- 每2个小时，进行数据更新
-    <task:scheduled-tasks>
-        <task:scheduled ref="dataSourceTableTask" method="getData" cron="0 0 */2 * * ?"/>
-    </task:scheduled-tasks>
--->
-    <!-- 定时任务 -->
-    <!-- 每1个小时，进行表结构更新
-    <task:scheduled-tasks>
-        <task:scheduled ref="dataSourceTableTask" method="updateAllDataResource" cron="0 0 */1 * * ?"/>
-    </task:scheduled-tasks>
-    -->
+    <!--<task:scheduled-tasks>-->
+        <!--<task:scheduled ref="subWithPolicyServiceImpl" method="autoFtRetrieval" cron="0 0 3 * * ?"/>-->
+    <!--</task:scheduled-tasks>-->
+
 
     <!-- 应用性能检查过滤器 -->
     <bean id="performanceFilter" class="com.gpdata.template.base.filter.PerformanceFilter">
+
     </bean>
+
+    <!--
+    <bean id="gangliaReporterHelp" class="com.gpdata.template.base.metrics.GangliaReporterHelp">
+        <constructor-arg name="ipAddress" value="${ganglia.server.ipAddress}"/>
+        <constructor-arg name="ipPort" value="${ganglia.server.ipPort}"/>
+    </bean>
+    -->
 
     <!-- 获取 spring 容器的工具 -->
     <bean class="com.gpdata.template.base.common.utils.SpringApplicationContextUtil" factory-method="getInstance"/>
-
-    <!-- 保存上传的文件的工具 -->
-    <bean id="flexibleFileUtil" class="${project.class.flexibleFileUtil}"/>
 
     <!-- 导入权限管理的配置 -->
     <import resource="applicationContext-shiro.xml"/>

@@ -1,12 +1,17 @@
 package com.gpdata.template.user.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 /**
  * Created by acer_liuyutong on 2017/3/20.
  */
+@Entity
+@Table(name = "`user`")
 public class User implements Serializable {
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long userId;
     private String username;
     private String password;
