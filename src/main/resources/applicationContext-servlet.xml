@@ -47,12 +47,9 @@
     <!--<mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>-->
     <!--<mvc:resources mapping="/fonts/**" location="/fonts/" cache-period="31556926"/>-->
     <!--<mvc:resources mapping="/htmls/**" location="/htmls/" cache-period="31556926"/>-->
-    <!--<mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>-->
-    <!--<mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>-->
-    <!--<mvc:resources mapping="/pictures/**" location="/pictures/" cache-period="31556926"/>-->
-    <!--<mvc:resources mapping="/style/**" location="/style/" cache-period="31556926"/>-->
-    <!--<mvc:resources mapping="/upload/**" location="/upload/" cache-period="31556926"/>-->
-    <!--<mvc:resources mapping="/storeLogoUpload/**" location="/storeLogoUpload/" cache-period="31556926"/>-->
+
+    <!--可以不经过后台处理，直接跳转页面-->
+    <mvc:view-controller path="/content/closure" view-name="closure"/>
 
     <mvc:default-servlet-handler/>
 
@@ -111,7 +108,7 @@
     <!-- Freemarker配置 -->
     <bean id="freemarkerConfig"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/pages/"/>
+        <property name="templateLoaderPath" value="/WEB-INF/content/"/>
         <property name="freemarkerVariables">
             <map>
                 <entry key="xml_escape" value-ref="fmXmlEscape" />

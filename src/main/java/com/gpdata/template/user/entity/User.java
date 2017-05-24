@@ -1,5 +1,7 @@
 package com.gpdata.template.user.entity;
 
+import com.alibaba.fastjson.JSONObject;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
@@ -60,12 +62,6 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "User{" +
-                "userId=" + userId +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", createDate=" + createDate +
-                '}';
+        return JSONObject.toJSONString(this)+"\n";
     }
 }

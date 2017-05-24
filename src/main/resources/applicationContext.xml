@@ -155,7 +155,7 @@
 
     <aop:config>
         <aop:pointcut id="servicePointcut"
-                      expression="execution(* com.gpdata.template..service.*.*(..))"/>
+                      expression="execution(* com.gpdata.template.*.service.*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="servicePointcut"/>
     </aop:config>
 
@@ -243,6 +243,17 @@
         <constructor-arg name="ipPort" value="${ganglia.server.ipPort}"/>
     </bean>
     -->
+
+    <!-- 配置RestTemplate -->
+    <!--Http client Factory-->
+    <bean id="httpClientFactory" class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory ">
+        <property name="connectTimeout"  value="${httpClientFactory.connectTimeout}"/>
+        <property name="readTimeout"  value="${httpClientFactory.readTimeout}"/>
+    </bean>
+    <!--RestTemplate-->
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <constructor-arg ref="httpClientFactory"/>
+    </bean>
 
     <!-- 获取 spring 容器的工具 -->
     <bean class="com.gpdata.template.base.common.utils.SpringApplicationContextUtil" factory-method="getInstance"/>

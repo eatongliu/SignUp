@@ -20,6 +20,7 @@
     </properties>
 
     <dependencies>
+
         <!-- 允许 js 跨域访问 (使用 jetty) -->
         <!-- http://mvnrepository.com/artifact/org.eclipse.jetty/jetty-servlets -->
         <dependency>
@@ -169,6 +170,12 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
             <version>3.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+            <version>3.4.1</version>
         </dependency>
 
         <dependency>
@@ -687,11 +694,21 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
+        <!--elasticsearch-->
         <dependency>
             <groupId>org.elasticsearch</groupId>
             <artifactId>elasticsearch</artifactId>
-            <version>2.3.4</version>
+            <version>2.4.5</version>
         </dependency>
+
+        <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.hypirion/primes &ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>com.hypirion</groupId>-->
+            <!--<artifactId>primes</artifactId>-->
+            <!--<version>0.2.2</version>-->
+        <!--</dependency>-->
+
     </dependencies>
     <build>
         <finalName>SignUp</finalName>
@@ -817,7 +834,7 @@
                 </project.azkaban.truststore>
 
                 <!-- ES路径 -->
-                <ES.url>http://192.168.1.222:9200</ES.url>
+                <ES.url>http://192.168.1.55:9200</ES.url>
                 <ES.cluster>elasticsearch</ES.cluster>
 
                 <!-- HDFS配置 -->

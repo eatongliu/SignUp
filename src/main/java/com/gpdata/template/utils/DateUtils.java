@@ -193,6 +193,16 @@ public class DateUtils {
         return myFmt.format(dt);
     }
 
+    /**
+     * 增加或减少天数
+     */
+    public static Date addDay(Date date, int num) {
+        Calendar startDT = Calendar.getInstance();
+        startDT.setTime(date);
+        startDT.add(Calendar.DAY_OF_MONTH, num);
+        return startDT.getTime();
+    }
+
     public static void main(String[] args) {
         LOGGER.debug("{}", DateUtils.strToTimestamp("2011.06.20",
                 "yyyy.MM.dd").getTime());
