@@ -99,4 +99,5 @@ public class SimpleTest {
 	    return byteArrayOutputStream.toByteArray();
     }
 
+
 }
