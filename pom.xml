@@ -702,6 +702,12 @@
             <version>2.4.5</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>rest</artifactId>
+            <version>5.4.0</version>
+        </dependency>
+
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/com.hypirion/primes &ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>com.hypirion</groupId>-->
@@ -834,8 +840,11 @@
                 </project.azkaban.truststore>
 
                 <!-- ES路径 -->
-                <ES.url>http://192.168.1.55:9200</ES.url>
+                <ES.url>http://192.168.1.222:9200</ES.url>
                 <ES.cluster>elasticsearch</ES.cluster>
+                <!-- ES 5.4.0 -->
+                <ES5.url>http://192.168.1.147:9200</ES5.url>
+                <ES5.cluster>elasticsearch</ES5.cluster>
 
                 <!-- HDFS配置 -->
                 <HDFS.url>hdfs://192.168.1.222:9000</HDFS.url>

@@ -1,4 +1,4 @@
-package lambda.entity;
+package com.gpdata.template.lambda.entity;
 
 /**
  * Created by acer_liuyutong on 2017/5/5.

@@ -1,6 +1,5 @@
 package com.gpdata.template.timer;
 
-import com.gpdata.template.utils.DateUtils;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -29,15 +28,14 @@ public class GenerateRandomNum implements ServletContextListener{
         Date date=calendar.getTime(); //第一次执行定时任务的时间
         //如果第一次执行定时任务的时间 小于当前的时间
         //此时要在 第一次执行定时任务的时间加一天，以便此任务在下个时间点执行。如果不加一天，任务会立即执行。
-        if (date.before(new Date())) {
-            date = DateUtils.addDay(date,1);
-        }
+//        if (date.before(new Date())) {
+//            date = DateUtils.addDay(date,1);
+//        }
         Timer timer = new Timer();
 
         //通过util获取IOC容器，并取出GenerateTask对象
         WebApplicationContext ioc = WebApplicationContextUtils.getWebApplicationContext(servletContext);
         GenerateTask task = ioc.getBean(GenerateTask.class);
-
         //安排指定的任务在指定的时间开始进行重复的固定延迟执行。
         timer.schedule(task, date, PERIOD_DAY);
     }

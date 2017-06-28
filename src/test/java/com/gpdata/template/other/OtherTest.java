@@ -1,4 +1,4 @@
-package other;
+package com.gpdata.template.other;
 
 import com.gpdata.template.base.service.RedisOperateService;
 import com.gpdata.template.timer.GenerateRandomNum;

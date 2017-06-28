@@ -1,6 +1,6 @@
-package lambda;
+package com.gpdata.template.lambda;
 
-import lambda.entity.Person;
+import com.gpdata.template.lambda.entity.Person;
 import org.apache.commons.math3.primes.Primes;
 import org.junit.Test;
 
@@ -114,5 +114,20 @@ public class LambdaTest {
 
         String collect1 = Arrays.stream(strings).collect(Collectors.joining(";"));
         System.out.println(collect1);
+    }
+
+    @Test
+    public void test8(){
+        List<Integer> list = Arrays.asList(numbers2);
+        list.stream().collect(Collectors.groupingBy(a -> 1));
+    }
+
+    @Test
+	public void test9(){
+	    List<Person> list = Arrays.asList(personArr);
+	    Map<Integer, Integer> collect = list.stream().collect(Collectors.groupingBy(person ->
+					    person.getAge(), Collectors.summingInt(e -> 1)
+	    		));
+	    System.out.println(collect);
     }
 }
