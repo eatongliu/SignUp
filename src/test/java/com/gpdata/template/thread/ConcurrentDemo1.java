@@ -1,4 +1,4 @@
-package thread;
+package com.gpdata.template.thread;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ExecutorService;

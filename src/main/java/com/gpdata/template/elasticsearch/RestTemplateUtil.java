@@ -19,10 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import org.testng.annotations.Test;
 
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by acer_liuyutong on 2017/5/23.
@@ -69,12 +66,31 @@ public class RestTemplateUtil {
 		user.setEmail("654166357@qq.com");
 		user.setCreateDate(new Date());
 
+		user = null;
 		HttpEntity<String> formEntity = new HttpEntity<>(JSONObject.toJSONString(user), headers);
 
 
-		url += "/lyt/test";
+		url += "/lyt2/test1";
 		logger.debug("url: {}",url);
-		restTemplate.put(url,null);
+		restTemplate.put(url,formEntity);
+	}
+
+	@Test
+	public void voidtest23(){
+		url += "/lyt1/_mapping/test53";
+
+		String json = "{\"properties\" : {}}";
+		System.out.println(json);
+		HttpEntity<String> formEntity = new HttpEntity<>(json, headers);
+
+		restTemplate.put(url,formEntity);
+	}
+	@Test
+	public void tes12(){
+		Map<String, Object> map = new HashMap<>();
+		map.put("properties", "{}");
+		String json1 = JSONObject.toJSONString(map);
+		System.out.println(json1);
 	}
 
 	@Test
@@ -108,23 +124,23 @@ public class RestTemplateUtil {
 	@Test
 	public void bulk(){
 		User user = new User();
-		user.setUsername("lyt4");
+		user.setUsername("4lyt4");
 		user.setPassword("123456");
-		user.setUserId(4L);
+		user.setUserId(44L);
 		user.setEmail("654166357@qq.com");
 		user.setCreateDate(new Date());
 
 		User user2 = new User();
-		user2.setUsername("lyt5");
+		user2.setUsername("5lyt5");
 		user2.setPassword("123456");
-		user2.setUserId(5L);
+		user2.setUserId(55L);
 		user2.setEmail("654166357@qq.com");
 		user2.setCreateDate(new Date());
 
 		User user3 = new User();
-		user3.setUsername("lyt6");
+		user3.setUsername("6lyt6");
 		user3.setPassword("123456");
-		user3.setUserId(6L);
+		user3.setUserId(66L);
 		user3.setEmail("654166357@qq.com");
 		user3.setCreateDate(new Date());
 		List<User> users = new ArrayList<>();

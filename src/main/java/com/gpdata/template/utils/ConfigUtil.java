@@ -26,11 +26,6 @@ public class ConfigUtil {
         while (keys.hasMoreElements()) {
             String key = keys.nextElement();
             String value = resourceBundle.getString(key);
-            if(!keys.hasMoreElements()){
-                LOGGER.debug("读取配置信息 : {} ==> {}\n", key, value);
-            }else{
-                LOGGER.debug("读取配置信息 : {} ==> {}", key, value);
-            }
             config.put(key, value);
         }
 
